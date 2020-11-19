@@ -1,0 +1,18 @@
+<h1>This is to show the cocktails</h1>
+<div class="bg-blue-400">
+<h2><%= @cocktail.name %></h2>
+<%  @cocktail.doses.each do |dose|%>
+<h3><%= dose.description %>
+<%= dose.ingredient.name %> </h3>
+<%= link_to 'delete', dose_path(dose), method: :delete %>
+
+<% end %>
+</div>
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
+<%= f.input :description %>
+<%= f.association :ingredient %> 
+<%= f.button :submit %>
+
+<% end %>
+
+
