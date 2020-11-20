@@ -18,8 +18,8 @@
     'pexels-lisa-fotios-109275.jpg',
     id: "background",
     class:"font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover") %>
-<h1 class="text-center p-5 m-3 ">Jammy's Cocktail Dreams</h1>
-<p class="text-center" >Welcome to you home away from home</p> 
+<h1 class="text-center p-5 m-3  no-underline hover:text-white hover:no-underline text-4xl">Sakura Yume</h1>
+<p class="text-center text-3xl text-gray-400" >Welcome to your home away from home</p> 
 
 
 
@@ -34,30 +34,31 @@
             <article class="overflow-hidden rounded-lg shadow-lg my-3">
 
                 <a href="#">
-                <%= image_tag cocktail.photo, class: "block h-auto w-full" %>
+                
+                 <%= cl_image_tag(cocktail.photo.key, 
+      width: 400, height: 300, crop: :fill) %> 
                    
                 </a>
 
-                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4 bg-gray-700">
                     <h2 class="text-lg">
                         
                             <%= link_to cocktail.name, cocktail_path(cocktail), class: "no-underline hover:underline text-black" %>
                        
-                    </h2>
-                    <p class="text-grey-darker text-sm">
-                        14/4/19
-                    </p>
+                   
                 </header>
 
-                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4 bg-gray-400">
                     <a class="flex items-center no-underline hover:underline text-black" href="#">
                         <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
                         <p class="ml-2 text-sm">
-                            Author Name
+                            With Love---- Sakura Yume
                         </p>
                     </a>
                     <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
                         <span class="hidden">Like</span>
+                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-heart"></i>
                         <i class="fa fa-heart"></i>
                     </a>
                 </footer>

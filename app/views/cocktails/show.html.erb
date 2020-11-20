@@ -7,10 +7,10 @@
 
 	
 
- <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-auto my-32 lg:my-0">
+ <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-auto my-32 lg:my-0 justify-center ">
     <div class="w-full lg:w-2/5">
 		<!-- Big profile image for side bar (desktop) -->
-		<%= image_tag @cocktail.photo, class: "rounded-none lg:rounded-lg shadow-2xl hidden lg:block"  %> 
+		<%= cl_image_tag @cocktail.photo.key, class: "rounded-none lg:rounded-lg shadow-2xl hidden lg:block",height: 600, width:400,crop: :fill  %> 
 		<!-- Image from: http://unsplash.com/photos/MP0IUfwrn0A -->
 		
 	</div>
