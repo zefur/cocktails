@@ -1,18 +1,71 @@
-<h1>This is to show the cocktails</h1>
-<div class="bg-blue-400">
-<h2><%= @cocktail.name %></h2>
-<%  @cocktail.doses.each do |dose|%>
-<h3><%= dose.description %>
-<%= dose.ingredient.name %> </h3>
-<%= link_to 'delete', dose_path(dose), method: :delete %>
 
-<% end %>
+<%= image_tag(
+    'pexels-alem-sánchez-613037.jpg',
+    id: "background",
+    class:"font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover") %>
+
+
+	
+
+ <div class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-auto my-32 lg:my-0">
+    <div class="w-full lg:w-2/5">
+		<!-- Big profile image for side bar (desktop) -->
+		<%= image_tag @cocktail.photo, class: "rounded-none lg:rounded-lg shadow-2xl hidden lg:block"  %> 
+		<!-- Image from: http://unsplash.com/photos/MP0IUfwrn0A -->
+		
+	</div>
+	<!--Main Col-->
+	<div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
+	
+
+		<div class="p-4 md:p-12 text-center lg:text-left">
+			<!-- Image for mobile view-->
+			<div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/MP0IUfwrn0A')"></div>
+			
+			<h1 class="text-3xl font-bold pt-8 lg:pt-0"><%= @cocktail.name %></h1>
+			<div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
+			<p class="pt-4 font-bold flex text-center justify-center lg:justify-start"> Ingredients</p>
+            <%  @cocktail.doses.each do |dose|%>
+            <div class= "grid grid-cols-3">
+                <h3 class="text-lg text-center col-span-2 mx-2 py-2 px-4"><%= dose.description %> <%= dose.ingredient.name %></h3>
+                <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start">  <%= link_to 'delete', dose_path(dose), method: :delete, class: " hover:text-red p-1 border border-red hover:border-transparent rounded" %> </p>
+            </div>
+        
+			
+            <% end %>
+
+  <%= simple_form_for([@cocktail, @dose]) do |f| %>
+            <div class="mx-4 card bg-white max-w-md p-5 md:rounded-lg my-4 mx-auto">
+                <div class="flex flex-col text-sm">
+                    <p class="font-bold mb-2">Input amount</p>
+                    <%= f.input_field :description, class: " appearance-none border border-gray-200 p-2 m-2 focus:outline-none focus:border-gray-500" %>
+                    <div>
+                        <%= f.association :ingredient, class: "w-full border border-black p-10 focus:outline-none focus:border-gray-500" %> 
+                        <%= f.button :submit,  class: "rounded text-gray-100 px-3 py-1 bg-blue-500 hover:shadow-inner hover:bg-blue-700 transition-all duration-300" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+
+
+
+			<div class="pt-12 pb-8">
+				<%= link_to "Cocktails", cocktails_path, class: "bg-green-700 hover:bg-green-900 text-white font-bold py-2 px-4 rounded-full"%>
+
+				  
+				
+			</div>
+
+			
+			
+			<!-- Use https://simpleicons.org/ to find the svg for your preferred product --> 
+
+		</div>
+
+	</div>
+	
+	
+
+
 </div>
-<%= simple_form_for([@cocktail, @dose]) do |f| %>
-<%= f.input :description %>
-<%= f.association :ingredient %> 
-<%= f.button :submit %>
-
-<% end %>
-
-
+</div>

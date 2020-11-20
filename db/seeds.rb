@@ -17,3 +17,16 @@ ingredients = JSON.parse(read)
 ingredients['drinks'].each do |drink|
     Ingredient.create!(name: drink.values[0])
 end
+
+url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=Alcoholic'
+file = open(url).read
+readable_file = JSON.parse(file)
+
+readable_file["drinks"].first(6).each_with_index do |item, index|
+  c = Cocktail.create(name: item["strDrink"])
+  puts "We passed coktail create"
+  puts item["strDrinkThumb"]
+  c.photo.attach(io: open(item["strDrinkThumb"]), filename: SecureRandom.hex(8))
+
+  puts "photo attached"
+end

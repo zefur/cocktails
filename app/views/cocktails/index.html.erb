@@ -1,9 +1,74 @@
-<h1> This is the cocktail page</h1>
+<nav class="bg-black-700 p-2 mt-0  w-full z-10 pin-t">
+    <div class="container mx-auto flex flex-wrap items-center">
+		<div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+			<a class="text-black no-underline hover:text-white hover:no-underline" href="#">
+				<span class="text-2xl pl-2"><i class="em em-grinning"></i> Brand McBrandface</span>
+			</a>
+        </div>
+		<div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
+			<ul class="list-reset flex justify-between flex-1 md:flex-none items-center">
+			  <li class="mr-3">
+				<%= link_to "New Cocktail", new_cocktail_path, class: "inline-block text-grey-dark no-underline hover:text-grey-lighter hover:text-underline py-2 px-4" %>
+			  </li>
+			</ul>
+		</div>
+    </div>
+</nav>
+<%= image_tag(
+    'pexels-lisa-fotios-109275.jpg',
+    id: "background",
+    class:"font-sans antialiased text-gray-900 leading-normal tracking-wider bg-cover") %>
+<h1 class="text-center p-5 m-3 ">Jammy's Cocktail Dreams</h1>
+<p class="text-center" >Welcome to you home away from home</p> 
 
-<%= link_to "New Cocktail", new_cocktail_path %>
 
-<% @cocktails.each do |cocktail| %>
-<div class="bg-blue-400">
-<h2 class="bg-blue-400"><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
+
+<div class="container my-12 mx-auto px-10 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+
+        <!-- Column --><% @cocktails.each do |cocktail| %>
+        <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+
+            <!-- Article -->
+            
+            <article class="overflow-hidden rounded-lg shadow-lg my-3">
+
+                <a href="#">
+                <%= image_tag cocktail.photo, class: "block h-auto w-full" %>
+                   
+                </a>
+
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h2 class="text-lg">
+                        
+                            <%= link_to cocktail.name, cocktail_path(cocktail), class: "no-underline hover:underline text-black" %>
+                       
+                    </h2>
+                    <p class="text-grey-darker text-sm">
+                        14/4/19
+                    </p>
+                </header>
+
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                        <p class="ml-2 text-sm">
+                            Author Name
+                        </p>
+                    </a>
+                    <a class="no-underline text-grey-darker hover:text-red-dark" href="#">
+                        <span class="hidden">Like</span>
+                        <i class="fa fa-heart"></i>
+                    </a>
+                </footer>
+
+            </article>
+           
+            <!-- END Article -->
+
+        </div>
+        <!-- END Column -->
+ <% end %>
+
+    </div>
 </div>
-<% end %>
